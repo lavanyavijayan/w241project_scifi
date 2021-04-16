@@ -2,3 +2,95 @@
 title: "Placeholder Notebook For Compiling Report"
 output: html_notebook
 ---
+
+```{r}
+# importing relevant libraries
+library(data.table)
+library(knitr)
+```
+
+```{r}
+# loading pilot data
+d_pilot <- data.table::fread(input = 'pilot_data.csv')
+```
+
+```{r}
+# viewing first 6 rows of pilot data
+head(d_pilot)
+```
+
+**There are five outcome measures: how (1) competent, (2) warm, (3) capable, and (4) well-intentioned the subject thinks the interviewee in the passage is, and (5) how much the subject respects the interviewee in the passage.**
+
+```{r}
+# Histogram
+hist(d_pilot$warm, main="Distribution of `Warm` Rating", xlab="`Warm` Rating")
+```
+
+```{r}
+# Simple Bar Plot
+barplot(table(d_pilot$warm), main="Distribution of `Warm` Rating", xlab="`Warm` Rating")
+
+barplot(table(d_pilot$respect), main="Distribution of `Respect` Rating", xlab="`Respect` Rating")
+```
+
+```{r}
+# Stacked Bar Plot
+counts_warm <- table(d_pilot$`passage gender`, d_pilot$warm)
+barplot(counts, main="Distribution of `Warm` Rating By Passage Gender",
+  xlab="`Warm` Rating", col=c("darkblue","red"),
+  legend = rownames(counts_warm))
+```
+
+```{r}
+# Grouped Bar Plot
+barplot(counts_warm, main="Distribution of `Warm` Rating By Passage Gender",
+  xlab="`Warm` Rating", col=c("darkblue","red"),
+  legend = rownames(counts), beside=TRUE)
+
+counts_respect <- table(d_pilot$`passage gender`, d_pilot$respect)
+barplot(counts, main="Distribution of `Respect` Rating By Passage Gender",
+  xlab="`Respect` Rating", col=c("darkblue","red"),
+  legend = rownames(counts), beside=TRUE)
+```
+
+```{r}
+# create a column that represents `warmth` by averaging `warm` rating and `well-intentioned` rating
+d_pilot$warmth <- (as.numeric(d_pilot$warm) + as.numeric(d_pilot$well_intentioned)) / 2
+
+# create a column that represents `competence` by averaging `competent` rating and `capable` rating
+d_pilot$competence <- (as.numeric(d_pilot$competent) + as.numeric(d_pilot$capable)) / 2
+```
+
+```{r}
+head(d_pilot)
+```
+
+```{r}
+# looking at breakdown of participant gender with passage gender (assigned treatment)
+table(d_pilot$gender, d_pilot$`passage gender`)
+```
+
+```{r}
+# testing for heterogeneity in pilot
+
+```
+
+
+```{r}
+# loading final data
+d_final <- data.table::fread(input = 'final_data.csv')
+```
+
+```{r}
+# viewing first 6 rows of final data
+head(d_final)
+```
+
+```{r}
+# check if blocked randomization worked in final survey & how much attrition affected blocks
+table(d_final$gender, d_final$passage_gender)
+```
+
+
+
+
