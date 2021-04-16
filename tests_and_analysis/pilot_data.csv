@@ -1,4 +1,4 @@
-,startdate,enddate,progress,duration,finished,recordeddate,responseid,userlanguage,gender,age,enjoy_reading,books,sci_fi,attention_check1,attention_check2,attention_check3,competent,warm,capable,well_intentioned,respect,recognize_passage,passage gender
+,startdate,enddate,progress,duration,finished,recordeddate,responseid,userlanguage,gender,age,enjoy_reading,books,sci_fi,attention_check1,attention_check2,attention_check3,competent,warm,capable,well_intentioned,respect,recognize_passage,passage_gender
 1,3/5/21 19:37,3/5/21 19:42,100,346,True,3/5/21 19:42,R_216C07I83MU2bKm,EN,Cisgender Male,22,1,0,3,smile,A world without robots,A news article written about the interviewee's retirement,5,1,5,3,4,No,Male
 2,3/5/21 19:59,3/5/21 20:10,100,627,True,3/5/21 20:10,R_0Opbx3vsROgJVgl,EN,Cisgender Female,21,1,0,5,smile,A world without robots,A news article written about the interviewee's retirement,4,2,5,3,3,No,Female
 3,3/5/21 20:43,3/5/21 20:50,100,404,True,3/5/21 20:50,R_1GxyTEX5UI467Q4,EN,Cisgender Female,22,2,1,1,smile,A world without robots,A news article written about the interviewee's retirement,3,2,5,4,4,No,Female
