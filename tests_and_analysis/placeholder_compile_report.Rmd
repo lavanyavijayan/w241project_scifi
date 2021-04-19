@@ -3,11 +3,42 @@ title: "Placeholder Notebook For Compiling Report"
 output: html_notebook
 ---
 
-```{r}
-# importing relevant libraries
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 library(data.table)
 library(knitr)
 ```
+
+# Abstract
+
+# Introduction 
+
+# Related Works
+
+# ROXO Overview
+
+# Experiment
+
+## Treatment
+
+## Randomizaton
+
+In the pilot survey, we used simple random assignment. Each participant had an equal probability of being assigned Treatment 1 (Passage with Female Character) and Treatment 2 (Passage with Male Character).
+
+In the final survey, we used block random assignment, wherein we blocked by participant gender. Towards the beginning of the survey, the participant is presented with 8 gender categories and asked to select the one they most closely identify with. Based on their selection, they are assigned either Treatment 1 or Treatment 2, in such a way that within each gender category, assignments are evenly distributed between Treatment 1 and Treatment 2. This was specified by conditionals implemented in Survey Flow in our Qualtrics surveys --- a conditional as shown below, for each of the following gender categories: *Cisgender Female*, *Cisgender Male*, *Transgender Female*, *Transgender Male*, *Transgender*, *Nonbinary*, *Gender Fluid*, *Other*.
+
+
+
+## Outcome Measures
+
+## Covariates
+
+# Pilot Study
+
+## Pilot Study Participants
+Participants of the pilot study were recruited through reaching out to friends and family and posting in our 5th year MIDS cohort Slack channel. So participants of the pilot study were mainly friends, family, and cohort members. There were 27 participants in total.
+
+## Pilot Data
 
 ```{r}
 # loading pilot data
@@ -18,6 +49,122 @@ d_pilot <- data.table::fread(input = 'pilot_data.csv')
 # viewing first 6 rows of pilot data
 head(d_pilot)
 ```
+
+## Power Calculation
+
+```{r}
+# create a column that represents `warmth` by averaging `warm` rating and `well-intentioned` rating
+d_pilot$warmth <- (as.numeric(d_pilot$warm) + as.numeric(d_pilot$well_intentioned)) / 2
+# create a column that represents `competence` by averaging `competent` rating and `capable` rating
+d_pilot$competence <- (as.numeric(d_pilot$competent) + as.numeric(d_pilot$capable)) / 2
+```
+
+```{r}
+# function to get the difference of means of an outcome variable
+diff_means_gender <- function(data, column_name){
+  female_outcomes <- as.numeric(data[data$passage_gender == 'PassageF', column_name])
+  male_outcomes <- as.numeric(data[data$passage_gender == 'PassageM', column_name])
+  
+  female_mean <- mean(female_outcomes)
+  male_mean <- mean(male_outcomes)
+  
+  diff_means <- female_mean - male_mean
+}
+# function to get the pooled standard deviation of an outcome variable
+pooled_sd_gender <- function(data, column_name){
+  female_outcomes <- as.numeric(data[data$passage_gender == 'PassageF', column_name])
+  male_outcomes <- as.numeric(data[data$passage_gender == 'PassageM', column_name])
+  
+  n1 <- length(female_outcomes)
+  n2 <- length(male_outcomes)
+  
+  sd1 <- sd(female_outcomes)
+  sd2 <- sd(male_outcomes)
+  
+  pooled <- (((n1 - 1)*sd1**2 + (n2-1)*sd2**2)/(n1+n2-2))**(1/2)
+}
+```
+
+```{r}
+# get the difference of means and pooled sd for outcome variable
+diff_mean_warmth <- diff_means_gender(d_pilot, 'warmth')
+pooled_sd_warmth <- pooled_sd_gender(d_pilot, 'warmth')
+diff_mean_competence <- diff_means_gender(d_pilot, 'competence')
+pooled_sd_competence <- pooled_sd_gender(d_pilot, 'competence')
+diff_mean_respect <- diff_means_gender(d_pilot, 'respect')
+pooled_sd_respect <- pooled_sd_gender(d_pilot, 'respect')
+```
+
+```{r}
+# sample size for warmth for power of 0.8
+power.t.test(power = .8,delta= diff_mean_warmth,sd=pooled_sd_warmth,sig.level=0.05,
+        type="two.sample",alternative="two.sided",strict = TRUE)
+```
+
+```{r}
+# sample size for competence for power of 0.8
+power.t.test(power = .8,delta= diff_mean_competence,sd=pooled_sd_competence,sig.level=0.05,
+        type="two.sample",alternative="two.sided",strict = TRUE)
+```
+
+```{r}
+# sample size for respect for power of 0.8
+power.t.test(power = .8,delta= diff_mean_respect,sd=pooled_sd_respect,sig.level=0.05,
+        type="two.sample",alternative="two.sided",strict = TRUE)
+```
+
+
+Doing a pilot study was a way to see if our study was reasonable and if there were any changes we needed to make before we released our final study. We conducted power calculations on the pilot study data to predict the appropriate sample size needed in our final study. We calculated for a power of 0.8 for all three outcome variables and got varying results for what sample size was necessary. We set a power of 0.8 because it was the standard in research and we thought an 80% probability of detecting an effect, given that the effect is really there was a high enough probability. Our final study will conduct t-tests of our outcome variables since we would have a sample larger than 30 respondents so we also used the power calculations on a t-test to be consistent with our final study. We computed the difference in means and pooled standard deviation of our metrics: warmth, competence, and respect to input into the power calculation. We needed 1550 respondents in total (775 respondents for each treatment) to have a power of 0.8 for our warmth metric that had a difference in mean of 0.08. With an even smaller difference in means (0.02) for our competence variable we would have needed 46,464 total respondents. Both of these sample sizes were unreasonable in the time and resources we had available to gather responses. However, our respect variable had a difference in means of 0.6 and with a power of 0.8 we would need only 100 total respondents (50 respondents in each treatment). This result gave us hope that if we could get at least 100 respondents we would have enough power to be confident in our results if we end up rejecting the null hypothesis in the final study. 
+
+## Changes From Pilot Study To Final Study
+A handful of changes were made to the survey after the pilot study. First, we shifted to blocked random assignment by participant gender instead of simple random assignment. The motivation for this was discussed earlier in the randomization section of the report. Additionally, we added more instructions at the beginning of the survey --- participants were told to do their best to complete the survey in one sitting and that the survey would take approximately 10 minutes. This was done to motivate them to take the survey since it should not take more than 10 minutes and to encourage them to complete the survey sooner rather than later.
+
+We also added a question asking for education level, which we thought would be a relevant covariate, as it would help inform us on participants’ reading levels, which can impact how they perceive characters. Moreover, we addressed the ambiguity in the third post-treatment attention check question, which at the time had read “What has the interviewer not experienced” and rephrased it to “What does the interviewee suggest the interviewer has not experienced?” We underlined the word “interviewee” to explicitly set it apart visually from the word “interviewer” in every place where both words were in the same question. Furthermore, we lowered the number of page breaks from 4 to 2 in order to keep participants more engaged and feel less intimidated by the number of steps to complete the survey. 
+
+Lastly, we disabled the back button so that participants cannot change their answers back and forth and that they respond to the post-treatment questions from their memory of the passage they read. 
+
+# Final Study
+
+## Final Study Participants
+
+## Distributions Of Final Data
+
+# Initial Results
+
+## Difference In Means
+
+## Linear Regression
+
+# Exploration
+
+## Motivation For Exploration
+
+## Exploratory Regression
+
+## Exploratory Filtrtation of Data
+
+## Results From Filtered Data
+
+### Difference In Means
+
+### Linear Regression
+
+# Discussion/Analysis
+
+# Conclusion
+
+## Summary Of Results
+
+## Future Work
+
+# Appendix
+
+
+
+
+
+
+
 
 **There are five outcome measures: how (1) competent, (2) warm, (3) capable, and (4) well-intentioned the subject thinks the interviewee in the passage is, and (5) how much the subject respects the interviewee in the passage.**
 
@@ -35,7 +182,7 @@ barplot(table(d_pilot$respect), main="Distribution of `Respect` Rating", xlab="`
 
 ```{r}
 # Stacked Bar Plot
-counts_warm <- table(d_pilot$`passage gender`, d_pilot$warm)
+counts_warm <- table(d_pilot$passage_gender, d_pilot$warm)
 barplot(counts, main="Distribution of `Warm` Rating By Passage Gender",
   xlab="`Warm` Rating", col=c("darkblue","red"),
   legend = rownames(counts_warm))
@@ -47,7 +194,7 @@ barplot(counts_warm, main="Distribution of `Warm` Rating By Passage Gender",
   xlab="`Warm` Rating", col=c("darkblue","red"),
   legend = rownames(counts), beside=TRUE)
 
-counts_respect <- table(d_pilot$`passage gender`, d_pilot$respect)
+counts_respect <- table(d_pilot$passage_gender, d_pilot$respect)
 barplot(counts, main="Distribution of `Respect` Rating By Passage Gender",
   xlab="`Respect` Rating", col=c("darkblue","red"),
   legend = rownames(counts), beside=TRUE)
@@ -67,14 +214,8 @@ head(d_pilot)
 
 ```{r}
 # looking at breakdown of participant gender with passage gender (assigned treatment)
-table(d_pilot$gender, d_pilot$`passage gender`)
+table(d_pilot$gender, d_pilot$passage_gender)
 ```
-
-```{r}
-# testing for heterogeneity in pilot
-
-```
-
 
 ```{r}
 # loading final data
