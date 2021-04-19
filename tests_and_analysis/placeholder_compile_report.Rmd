@@ -27,6 +27,10 @@ In the pilot survey, we used simple random assignment. Each participant had an e
 
 In the final survey, we used block random assignment, wherein we blocked by participant gender. Towards the beginning of the survey, the participant is presented with 8 gender categories and asked to select the one they most closely identify with. Based on their selection, they are assigned either Treatment 1 or Treatment 2, in such a way that within each gender category, assignments are evenly distributed between Treatment 1 and Treatment 2. This was specified by conditionals implemented in Survey Flow in our Qualtrics surveys --- a conditional as shown below, for each of the following gender categories: *Cisgender Female*, *Cisgender Male*, *Transgender Female*, *Transgender Male*, *Transgender*, *Nonbinary*, *Gender Fluid*, *Other*.
 
+![Conditional]('conditional.png')
+
+The motivation for blocking by participant gender in the final study was because we anticipated heterogeneous treatment effects based on this variable. Specifically, we anticipated a possible relationship between one’s gender and how one rates a character of a particular gender. For example, male participants might tend to rate the male character more highly than the female character; similarly, female participants might tend to rate the female character more highly than the male character. Thus, the treatment effect may vary considerably between participants of one gender category and participants of another gender category. If most participants of a particular category are assigned the same treatment, the outcomes of each treatment group would be polarized. Blocking by participant gender would help avoid that, as participants of each gender category would be evenly assigned to the treatments.
+
 
 
 ## Outcome Measures
