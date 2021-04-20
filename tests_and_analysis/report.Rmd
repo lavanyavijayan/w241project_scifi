@@ -1,10 +1,10 @@
 ---
-title: "Placeholder Notebook For Compiling Report"
-output: html_document
+title: "Gender Bias in Science Fiction Fantasy"
+authors: "Lavanya Vijayan, Charis Chan, Joyce Ching, Inderpal Kaur"
+output: pdf_document
 ---
 
-```{r setup, echo=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE}
 library(data.table)
 library(knitr)
 library(dplyr)
@@ -12,9 +12,14 @@ library(ggplot2)
 library(lmtest)
 library(patchwork)
 library(stargazer)
+library(sandwich)
 ```
 
 # Abstract
+
+Gender biases permeate both throughout the real world and literature. Especially in the context of the science-fiction and fantasy (SFF) genres that are heavily male dominated and have been found to influence public perceptions and acceptance of science, evaluating the relationship between gender and character perception can provide deeper insight into how gender influences STEM fields. In particular, based on a science fiction character’s gender, are warmth and competence of the character and respect for them perceived differently?
+
+We address this research question by recruiting MTurkers, university English departments, colleagues, friends, and family to answer a survey that asks participants to read a science fiction passage and evaluate the main character on the dimensions of warmth, competence, and respect. The intervention involved changing the passage to remove any identifiers and creating female and male versions of the passage by changing the pronouns associated with the main character. In the results, we found that those who received the male treatment passage perceived the main character to be warmer and more competent than those who received the female treatment passage. However, the small effect size and statistical insignificance of our results suggest that the quality of our original data may have impacted the observed patterns in our outcome measures.
 
 # Introduction 
 In the real world, humans and even machines sometimes report perceived differences between people of different genders that often align with gender stereotypes. These differences in manner and personality can also extend to perceptions about fictional characters in literature. Historically, the science-fiction and fantasy (SFF) genres in particular tend to be male-dominated in terms of authors, readership, and main characters (Flatt, 2018). This in conjunction with other factors has led some readers to observe that female main characters tend to be judged more harshly and along different criteria than their male counterparts in the genre (Konnikova, 2013). This raises the question: **Based on a science fiction character’s gender, are warmth and competence of the character and respect for them perceived differently?** The answer to this question would be valuable to discover because the SFF genre in particular has been found to influence the perceptions and acceptance of science by the public (Menadue & Jacups, 2018). If there is a relationship between gender and character perception in SFF, this might be one lens through which we can investigate gender in science and STEM fields. Ultimately, literature has the power to either amplify stereotypes or encourage empathy and open-mindedness, and understanding how readers respond to characters can reveal potential dynamics of bias in the genre.
@@ -22,8 +27,10 @@ In the real world, humans and even machines sometimes report perceived differenc
 We are conducting a randomized controlled experiment to allow us to investigate this causal question and determine whether or not there is strong evidence to support the idea that a character’s gender in SFF influences the perceptions of the readers. 
 
 To address the research question, the hypotheses are the following. 
-Null hypothesis: There is no difference in perception between male and female versions of the character, in terms of warmth, competence, and respect.
-Alternative hypothesis: There is a difference in perception between male and female versions of the character, in terms of warmth, competence, and respect.
+
+* Null hypothesis: There is no difference in perception between male and female versions of the character, in terms of warmth, competence, and respect.
+
+* Alternative hypothesis: There is a difference in perception between male and female versions of the character, in terms of warmth, competence, and respect.
 
 Based on existing gender stereotypes, our expectation is that, on average, female characters will be perceived as more warm and less competent and will be less respected than their male counterparts.
 
@@ -77,9 +84,13 @@ The variables Warmth and Competence will be calculated by taking the average res
 In addition to being randomly assigned a version of the passage to read, participants were evenly blocked according to their gender to reduce the potential for the reader’s gender to introduce major variations in character perception. Further covariates that we collected included basic information about the participant (i.e. gender, age, education) and the participant’s reading habits (i.e. How much do you enjoy reading compared to doing other things? How much do you like science fiction and fantasy compared to other things you read?). We used the information about reading habits to investigate potential correlations between past experience with the genre and character perception; if there are differences between how experienced and inexperienced SFF readers respond, this might be an indication that the two groups have some fundamental differences in how they understand gender in SFF due to their reading habits. 
 
 To assess whether participants are actually responding to passage, we also added comprehension/recall questions that demonstrated the participant’s understanding of the reading immediately after they were shown to passage. Specifically, we asked them the following (in the final study): 
+
 * What does the interviewer think the interviewee never does?
+
 * What does the interviewee suggest the interviewer has not experienced?
+
 * What is the interview being conducted for?
+
 The correct answers to these questions were explicitly stated in the passage and should have been clear to respondents who read the text comprehensively according to the survey instructions. The effectiveness of these comprehension questions was confirmed by the [insert stat about Slack/e-mail respondents]. Additionally, we also asked them “Did the passage look familiar to you?” to see if the familiarity of the passage or having read the full text was correlated with responses that differed from people who were reading the passage for the first time, as well as the effectiveness of our efforts in ambiguating the passage. 
 
 # Pilot Study
@@ -89,17 +100,17 @@ Participants of the pilot study were recruited through reaching out to friends a
 
 ## Pilot Data
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # loading pilot data
 d_pilot <- data.table::fread(input = 'pilot_data.csv')
 ```
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # viewing first 6 rows of pilot data
 head(d_pilot)
 ```
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 plot_bars_by_gender <- function(outcome_col, passage_gender) {
   outcome_plot <- ggplot() +
     geom_bar(aes(x=outcome_col, fill=passage_gender), position="dodge", alpha=0.8) + 
@@ -115,14 +126,14 @@ The distribution of each outcome measure in the pilot data is displayed in Appen
 
 ## Power Calculation
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # create a column that represents `warmth` by averaging `warm` rating and `well-intentioned` rating
 d_pilot$warmth <- (as.numeric(d_pilot$warm) + as.numeric(d_pilot$well_intentioned)) / 2
 # create a column that represents `competence` by averaging `competent` rating and `capable` rating
 d_pilot$competence <- (as.numeric(d_pilot$competent) + as.numeric(d_pilot$capable)) / 2
 ```
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # function to get the outcomes using a specified metric for a specified treatment group
 get_outcomes <- function(treatment, column_name) {
   if (column_name == 'warmth') {
@@ -162,7 +173,7 @@ pooled_sd_gender <- function(column_name){
 }
 ```
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # get the difference of means and pooled sd for outcome variable
 diff_mean_warmth <- diff_means_gender('warmth')
 pooled_sd_warmth <- pooled_sd_gender('warmth')
@@ -217,7 +228,7 @@ The messages we wrote in Slack and over email are documented in Appendix 3.
 
 ## Final Data
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # loading final data
 d_final <- data.table::fread(input = 'final_data.csv')
 ```
@@ -227,7 +238,7 @@ d_final <- data.table::fread(input = 'final_data.csv')
 head(d_final)
 ```
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # create a column that represents `warmth` by averaging `warm` rating and `well-intentioned` rating
 d_final$warmth <- (as.numeric(d_final$warm) + as.numeric(d_final$well_intentioned)) / 2
 
@@ -235,7 +246,7 @@ d_final$warmth <- (as.numeric(d_final$warm) + as.numeric(d_final$well_intentione
 d_final$competence <- (as.numeric(d_final$competent) + as.numeric(d_final$capable)) / 2
 ```
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # shorten phrases for education levels
 d_final <-  d_final %>%
   mutate(educ_short = case_when(
@@ -258,7 +269,7 @@ To analyze our results, we will take the average Warmth rating and Competence ra
 
 ### Difference In Means For Warmth
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # difference in means for `warmth`
 test_warmth <- t.test(warmth ~ passage_gender, data = d_final, paired = FALSE)
 ```
@@ -267,7 +278,7 @@ The average `warmth` rating given to the female character was `r test_warmth$est
 
 ### Difference In Means For Competence
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # difference in means for `competence`
 test_competence <- t.test(competence ~ passage_gender, data = d_final, paired = FALSE)
 ```
@@ -276,7 +287,7 @@ The average `competence` rating given to the female character was `r test_compet
 
 ### Difference In Means For Respect
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # difference in means for `respect`
 test_respect <- t.test(respect ~ passage_gender, data = d_final, paired = FALSE)
 ```
@@ -289,7 +300,7 @@ The effect direction is positive for all three metrics (`warmth`, and `competenc
 
 ## Linear Regression
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 null_model <- d_final[ , lm((as.numeric(d_final$passage_gender == "PassageM") - 1) ~ 1)]
 full_model <- d_final[ , lm((as.numeric(d_final$passage_gender == "PassageM") - 1) ~ 1 + gender + age + education + enjoy_reading + books + sci_fi)]
 cov_balance_check <- anova(null_model, full_model, test='F')
@@ -297,7 +308,7 @@ cov_balance_check <- anova(null_model, full_model, test='F')
 
 Before examining our regression results, we performed a covariate balance check to test for inconsistencies in our randomization scheme. To compare a null intercept-only model to a full model with the covariate information we collected, we conducted an F-test to analyze the amount of additional variance explained by the full model. With a p-value of `r cov_balance_check$"Pr(>F)"`, we failed to reject the null hypothesis. In terms of our balance check, the test does not provide strong evidence of covariate imbalance or randomization errors across the treatment groups.
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 warmth_model <- d_final[ , lm(warmth ~ passage_gender + gender + age + education + enjoy_reading + books + sci_fi)]
 warmth_model$vcovHC_ <- vcovHC(warmth_model, type="HC0")
 competence_model <- d_final[ , lm(competence ~ passage_gender + gender + age + education + enjoy_reading + books + sci_fi)]
@@ -310,7 +321,7 @@ respect_model$vcovHC_ <- vcovHC(respect_model, type="HC0")
 stargazer(
   warmth_model, 
   competence_model, 
-  respect_model, type="text", se = list(sqrt(diag(warmth_model$vcovHC_)),
+  respect_model, type="latex", se = list(sqrt(diag(warmth_model$vcovHC_)),
                                       sqrt(diag(competence_model$vcovHC_)), 
                                       sqrt(diag(respect_model$vcovHC_))), 
   covariate.labels = c("Treatment (male passage)", "Block: Cisgender Male", "Block: Gender Fluid", "Block: Nonbinary", "Block: Other", "Block: Transgender Female", "Block: Transgender Male", "Age", "Bachelor's degree", "Doctorate degree", "High school/GED", "Master's degree", "Enjoy reading", "Books read", "Enjoy sci-fi"))
@@ -361,7 +372,7 @@ This leads us to believe that responses from MTurk might not be as thorough as r
 
 Thus, we filter the data, creating a subset that only includes responses coming from Slack/Email. 
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # filter data to only include responses coming from Slack/Email
 d_filtered <-  d_final %>% filter(source == "slack_email")
 ```
@@ -372,17 +383,16 @@ d_filtered <-  d_final %>% filter(source == "slack_email")
 
 ### Difference In Means For Warmth On Filtered Data
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # difference in means for `warmth` on filtered data
 test_warmth_filtered  <- t.test(warmth ~ passage_gender, data = d_filtered, paired = FALSE)
-test_warmth_filtered
 ```
 
 The average `warmth` rating given to the female character was `r test_warmth_filtered$estimate[1]` and the average `warmth` rating given to the male character was `r test_warmth_filtered$estimate[2]`. The average treatment effect with the `warmth` metric (the average difference in perceived `warmth` between female character and male character) is `r test_warmth_filtered$statistic`. This test resulted in a p-value of `r test_warmth_filtered$p.value` and standard error of `r (test_warmth_filtered$conf.int[2] - test_warmth_filtered$conf.int[1]) / 3.92`.
 
 ### Difference In Means For Competence On Filtered Data
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # difference in means for `competence` on filtered data
 test_competence_filtered <- t.test(competence ~ passage_gender, data = d_filtered, paired = FALSE)
 ```
@@ -391,7 +401,7 @@ The average `competence` rating given to the female character was `r test_compet
 
 ### Difference In Means For Respect On Filtered Data
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 # difference in means for `respect` on filtered data
 test_respect_filtered <- t.test(respect ~ passage_gender, data = d_filtered, paired = FALSE)
 ```
@@ -406,7 +416,7 @@ The exploratory difference in means tests on the filtered data were not statisti
 
 ### Linear Regression On Filtered Data
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 filtered_warmth_model <- d_filtered[ , lm(warmth ~ passage_gender + gender + age + education + enjoy_reading + books + sci_fi)]
 filtered_warmth_model$vcovHC_ <- vcovHC(filtered_warmth_model, type="HC0")
 filtered_competence_model <- d_filtered[ , lm(competence ~ passage_gender + gender + age + education + enjoy_reading + books + sci_fi)]
@@ -419,7 +429,7 @@ filtered_respect_model$vcovHC_ <- vcovHC(filtered_respect_model, type="HC0")
 stargazer(
   filtered_warmth_model, 
   filtered_competence_model, 
-  filtered_respect_model, type="text", se = list(sqrt(diag(filtered_warmth_model$vcovHC_)),
+  filtered_respect_model, type="latex", se = list(sqrt(diag(filtered_warmth_model$vcovHC_)),
                                       sqrt(diag(filtered_competence_model$vcovHC_)), 
                                       sqrt(diag(filtered_respect_model$vcovHC_))), 
   covariate.labels = c("Treatment (male passage)", "Block: Cisgender Male", "Block: Nonbinary", "Block: Other", "Block: Transgender Female", "Block: Transgender Male", "Age", "Bachelor's degree", "Doctorate degree", "High school/GED", "Master's degree", "Enjoy reading", "Books read", "Enjoy sci-fi"))
@@ -443,6 +453,7 @@ One of the limitations of our study is that it is highly dependent on the passag
 In future studies, we would be interested in seeing the treatment effects for a less recognizable passage and where the female character is presented as less of a “cold scientist”. We would also like to find ways to obtain a larger, higher quality sample of participants where they read the passages closely enough to answer the attention check questions accurately. However, this will be challenging to achieve as it is difficult to motivate participants and anticipate quality of responses prior to applying the treatment. Targeting people who would be willing to read comprehensively will limit the population we can extrapolate our findings to and may potentially bias our results to a specific subset of the population. Shortening the passage also gives readers less context through which to evaluate the characters and makes whichever passage we choose less explicitly of the SFF genre. Moreover, a shorter passage might motivate more participants to complete the survey, leading to less attrition and larger sample size, as well as enable them to read the story more closely without skipping or skimming over details, leading their responses to the post-treatment questions to be more representative of their perceptions. 
 
 To further expand our research, we would also be interested in applying our current procedure to different genres other than SFF and expanding the range of character genders. Our current design tests specifically for differences in perception of male and female characters in SFF, but it would be relevant to investigate whether the results of the study apply beyond the context of the specific passage and genre as well as how perceptions may change for non-binary or gender non-conforming characters.
+
 
 # Appendix
 
