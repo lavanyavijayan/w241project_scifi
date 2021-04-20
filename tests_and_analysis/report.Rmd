@@ -1,6 +1,6 @@
 ---
 title: "Gender Bias in Science Fiction Fantasy"
-authors: "Lavanya Vijayan, Charis Chan, Joyce Ching, Inderpal Kaur"
+author: "Lavanya Vijayan, Charis Chan, Joyce Ching, Inderpal Kaur"
 output: pdf_document
 ---
 
