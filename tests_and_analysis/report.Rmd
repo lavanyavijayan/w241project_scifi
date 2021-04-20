@@ -411,14 +411,13 @@ stargazer(
   covariate.labels = c("Treatment (male passage)", "Block: Cisgender Male", "Block: Nonbinary", "Block: Other", "Block: Transgender Female", "Block: Transgender Male", "Age", "Bachelor's degree", "Doctorate degree", "High school/GED", "Master's degree", "Enjoy reading", "Books read", "Enjoy sci-fi"))
 ```
 
-
-# Discussion
-
 # Conclusion
 
 ## Summary Of Results
 
+
 ## Future Work
+
 
 # Appendix
 
@@ -538,57 +537,5 @@ education_plot <- ggplot(data=d_final) +
   theme(panel.grid.minor.x=element_blank(), panel.grid.major.x=element_blank())
 ```
 
-
-
-
-
-
-
-**There are five outcome measures: how (1) competent, (2) warm, (3) capable, and (4) well-intentioned the subject thinks the interviewee in the passage is, and (5) how much the subject respects the interviewee in the passage.**
-
-```{r}
-# Histogram
-hist(d_pilot$warm, main="Distribution of `Warm` Rating", xlab="`Warm` Rating")
-```
-
-```{r}
-# Simple Bar Plot
-barplot(table(d_pilot$warm), main="Distribution of `Warm` Rating", xlab="`Warm` Rating")
-
-barplot(table(d_pilot$respect), main="Distribution of `Respect` Rating", xlab="`Respect` Rating")
-```
-
-```{r}
-# Stacked Bar Plot
-counts_warm <- table(d_pilot$passage_gender, d_pilot$warm)
-barplot(counts_warm, main="Distribution of `Warm` Rating By Passage Gender",
-  xlab="`Warm` Rating", col=c("darkblue","red"),
-  legend = rownames(counts_warm))
-```
-
-```{r}
-# Grouped Bar Plot
-barplot(counts_warm, main="Distribution of `Warm` Rating By Passage Gender",
-  xlab="`Warm` Rating", col=c("darkblue","red"),
-  legend = rownames(counts_warm), beside=TRUE)
-
-counts_respect <- table(d_pilot$passage_gender, d_pilot$respect)
-barplot(counts_respect, main="Distribution of `Respect` Rating By Passage Gender",
-  xlab="`Respect` Rating", col=c("darkblue","red"),
-  legend = rownames(counts_respect), beside=TRUE)
-```
-
-
-```{r}
-# looking at breakdown of participant gender with passage gender (assigned treatment)
-table(d_pilot$gender, d_pilot$passage_gender)
-```
-
-
-
-```{r}
-# check if blocked randomization worked in final survey & how much attrition affected blocks
-table(d_final$gender, d_final$passage_gender)
-```
 
 
