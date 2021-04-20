@@ -5,6 +5,7 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 library(data.table)
 library(knitr)
 library(dplyr)
@@ -39,11 +40,11 @@ Prior research in the area of gender stereotypes and perception has evaluated th
 
 # Experiment
 
-To address the research question, we carried out the experiment through a survey we created on Qualtrics. As part of the survey, each participant will be given a short SFF passage to read followed by questions about their perceptions of the main character in the passage. We enabled a survey protection feature that prevents participants from taking the survey more than once. 
+To address the research question, we carried out the experiment through a survey we created on Qualtrics. As part of the survey, each participant was given a short SFF passage to read followed by questions about their perceptions of the main character in the passage. We enabled a survey protection feature that prevented participants from taking the survey more than once. 
 
 ## Treatment
 
-In an ideal setting, we would be able to gather responses to a novel or other real work of fiction by creating two versions with the same story except for the gender of the main character; however, recruiting participants to read a full-length novel would take too long and introduces the possibility that some respondents may have already read the work or are aware of the original character’s gender. Instead, we looked for an engaging passage (roughly 1000 words and about a 5 minute read) from a reputable author in the SFF genre. This passage should not be the climax of the story since it would be too easy for respondents familiar with the SFF genre to recognize the work. We used the introduction of I, Robot by Isaac Asimov because it fit all the criteria we were looking for: reputable author and story, short enough, and interesting yet not the main action of the full novel. The original passage is an interview with the main character, Susan Calvin, about her life’s work with robots and her retirement. We created two versions of the passage that signal different gender identities for the main character through gender pronouns, and half of the participants of the study will be randomly assigned to read the version of the passage that uses typically masculine pronouns (he/his), while the other half will read the version of the passage that uses typically feminine pronouns (she/hers). The passage only refers to the main character through gender pronouns because we didn’t want the character name to bring up unconscious name biases. We also replaced any notable details such as specific sci-fi phrases only Asimov uses, company names, supporting character names that would likely lead someone to recognize the passage. Aside from the character’s pronouns, the content of the passages were the same for the two different passages. We wanted to avoid priming participants to be more aware or sensitive to the character’s gender before reading the passage, therefore we excluded explanations of the treatment and control conditions from the study description.
+In an ideal setting, we would be able to gather responses to a novel or other real work of fiction by creating two versions with the same story except for the gender of the main character; however, recruiting participants to read a full-length novel would have taken too long and introduced the possibility that some respondents had already read the work or were aware of the original character’s gender. Instead, we looked for an engaging passage (roughly 1000 words and about a 5 minute read) from a reputable author in the SFF genre. This passage was not the climax of the story since it would have been too easy for respondents familiar with the SFF genre to recognize the work. We used the introduction of *I, Robot* by Isaac Asimov because it fit all the criteria we were looking for: reputable author and story, short, and engaging. The original passage was an interview with the main character, Susan Calvin, about her life’s work with robots and her retirement. We created two versions of the passage that signaled different gender identities for the main character through gender pronouns, and half of the participants of the study were randomly assigned to read the version of the passage that used typically masculine pronouns (he/his), while the other half read the version of the passage that used typically feminine pronouns (she/hers). The passage only referred to the main character through gender pronouns because we didn’t want the character name to bring up unconscious name biases. We also replaced any notable details such as specific sci-fi phrases only Asimov uses, company names, and supporting character names that would likely lead someone to recognize the passage. Aside from the character’s pronouns, the content of the passages were the same for the two different passages. We wanted to avoid priming participants to be more aware or sensitive to the character’s gender before reading the passage, therefore we excluded explanations of the treatment and control conditions from the study description.
 
 An excerpt from the original piece and excerpts from the two treatment passages we constructed from it are displayed in Appendix 1.  
 
@@ -53,19 +54,19 @@ An excerpt from the original piece and excerpts from the two treatment passages 
 
   $R$  $X_M$   $O$
   
-Our research design can be described using the above ROXO notation. This is a Posttest Only Randomized Experiment where we are using a between subjects comparison to observe the differences between subjects who will see only one variation of the treatment. We will begin with using blocked random assignment (R) to assign participants to either the female passage treatment group or the male passage treatment group. Members of each group will then be given the passage associated with their group (XF, XM) and evaluated for their perception of the main character’s warmth, competence, and respectability after reading. As participants will have no way of knowing about the main character beforehand, we can only evaluate them after the treatment has been given.  
+Our research design can be described using the above ROXO notation. This is a Posttest Only Randomized Experiment where we used a between subjects comparison to observe the differences between subjects who saw only one variation of the treatment. We began with using blocked random assignment (R) to assign participants to either the female passage treatment group or the male passage treatment group. Members of each group were then given the passage associated with their group (XF, XM) and evaluated for their perception of the main character’s warmth, competence, and respectability after reading. As participants had no way of knowing about the main character beforehand, we could only evaluate them after the treatment was given.  
 
 ## Randomizaton Process
 
 In the pilot survey, we used simple random assignment. Each participant had an equal probability of being assigned Treatment 1 (Passage with Female Character) and Treatment 2 (Passage with Male Character).
 
-In the final survey, we used block random assignment, wherein we blocked by participant gender. Towards the beginning of the survey, the participant is presented with 8 gender categories and asked to select the one they most closely identify with. Based on their selection, they are assigned either Treatment 1 or Treatment 2, in such a way that within each gender category, assignments are evenly distributed between Treatment 1 and Treatment 2. This was specified by conditionals implemented in Survey Flow in our Qualtrics surveys --- a conditional as shown below, for each of the following gender categories: *Cisgender Female*, *Cisgender Male*, *Transgender Female*, *Transgender Male*, *Transgender*, *Nonbinary*, *Gender Fluid*, *Other*.
+In the final survey, we used block random assignment, wherein we blocked by participant gender. Towards the beginning of the survey, the participant was presented with 8 gender categories and asked to select the one they most closely identify with. Based on their selection, they were assigned either Treatment 1 or Treatment 2, in such a way that within each gender category, assignments were evenly distributed between Treatment 1 and Treatment 2. This was specified by conditionals implemented in Survey Flow in our Qualtrics surveys --- a conditional as shown below, for each of the following gender categories: *Cisgender Female*, *Cisgender Male*, *Transgender Female*, *Transgender Male*, *Transgender*, *Nonbinary*, *Gender Fluid*, *Other*.
 
-![Figure 1: Conditional](conditional.png)
+![Conditional](conditional.png)
 
-The motivation for blocking by participant gender in the final study was because we anticipated heterogeneous treatment effects based on this variable. Specifically, we anticipated a possible relationship between one’s gender and how one rates a character of a particular gender. For example, male participants might tend to rate the male character more highly than the female character; similarly, female participants might tend to rate the female character more highly than the male character. Thus, the treatment effect may vary considerably between participants of one gender category and participants of another gender category. If most participants of a particular category are assigned the same treatment, the outcomes of each treatment group would be polarized. Blocking by participant gender would help avoid that, as participants of each gender category would be evenly assigned to the treatments.
+The motivation for blocking by participant gender in the final study was because we anticipated heterogeneous treatment effects based on this variable. Specifically, we anticipated a possible relationship between one’s gender and how one rates a character of a particular gender. For example, male participants might tend to rate the male character more highly than the female character; similarly, female participants might tend to rate the female character more highly than the male character. Thus, the treatment effect may vary considerably between participants of one gender category and participants of another gender category. If most participants of a particular category were assigned the same treatment, the outcomes of each treatment group would be polarized. Blocking by participant gender would help avoid that, as participants of each gender category would be evenly assigned to the treatments.
 
-![Figure 2: Consort Diagram](consort_diagram.png)
+![Consort Diagram](consort_diagram.png)
 
 As displayed by the consort diagram above, the blocking worked, and we were able to achieve near-perfect even distribution of treatment assignment per participant gender category. For the categories where there is a difference of 1 between the number of participants of that category assigned to Treatment 1 and the number of participants of that category assigned to Treatment 2, that is due to the number of participants of that category being odd. For the categories where the difference is greater than 1, that is due to attrition. 
 
@@ -73,7 +74,7 @@ As displayed by the consort diagram above, the blocking worked, and we were able
 
 To track whether readers make similar distinctions in judgment when it comes to fictional characters, we adapted the Warmth-Competence measures from the Stereotype Content Model to assess how character gender impacts reader perceptions. 
 
-![Figure 3: Question Format](question_format.png)
+![Question Format](question_format.png)
 
 After reading the passage, participants were asked a series of questions to gauge their perception of the main character. These questions were of the form: In your opinion, how _________ is the interviewee in the passage? The blanks will be replaced by either Warmth terms (warm and well-intentioned) or Competence terms (competent and capable). We included an additional question asking, “How much do you respect the interviewee in the passage?” to consider an additional dimension of the character and any insights it may provide from if correlated with the other variables. As shown in Figure 3, participants’ responses will be recorded on a 5-point Likert scale, where 1 is “not at all” and 5 is “extremely” (Fiske et al., 2002). 
 
@@ -306,7 +307,7 @@ full_model <- d_final[ , lm((as.numeric(d_final$passage_gender == "PassageM") - 
 cov_balance_check <- anova(null_model, full_model, test='F')
 ```
 
-Before examining our regression results, we performed a covariate balance check to test for inconsistencies in our randomization scheme. To compare a null intercept-only model to a full model with the covariate information we collected, we conducted an F-test to analyze the amount of additional variance explained by the full model. With a p-value of `r cov_balance_check$"Pr(>F)"`, we failed to reject the null hypothesis. In terms of our balance check, the test does not provide strong evidence of covariate imbalance or randomization errors across the treatment groups.
+Before examining our regression results, we performed a covariate balance check to test for inconsistencies in our randomization scheme. To compare a null intercept-only model to a full model with the covariate information we collected, we conducted an F-test to analyze the amount of additional variance explained by the full model. With a p-value of `r cov_balance_check$"Pr(>F)"[2]`, we failed to reject the null hypothesis. In terms of our balance check, the test does not provide strong evidence of covariate imbalance or randomization errors across the treatment groups.
 
 ```{r, include=FALSE}
 warmth_model <- d_final[ , lm(warmth ~ passage_gender + gender + age + education + enjoy_reading + books + sci_fi)]
@@ -324,10 +325,12 @@ stargazer(
   respect_model, type="latex", se = list(sqrt(diag(warmth_model$vcovHC_)),
                                       sqrt(diag(competence_model$vcovHC_)), 
                                       sqrt(diag(respect_model$vcovHC_))), 
-  covariate.labels = c("Treatment (male passage)", "Block: Cisgender Male", "Block: Gender Fluid", "Block: Nonbinary", "Block: Other", "Block: Transgender Female", "Block: Transgender Male", "Age", "Bachelor's degree", "Doctorate degree", "High school/GED", "Master's degree", "Enjoy reading", "Books read", "Enjoy sci-fi"))
+  covariate.labels = c("Treatment (male passage)", "Block: Cisgender Male", "Block: Gender Fluid", "Block: Nonbinary", "Block: Other", "Block: Transgender Female", "Block: Transgender Male", "Age", "Bachelor's degree", "Doctorate degree", "High school/GED", "Master's degree", "Enjoy reading", "Books read", "Enjoy sci-fi"), 
+  header=FALSE, 
+  title="Full Data Regression")
 ```
 
-As seen in the table above, the regression results for each of the outcome measures demonstrate a small negative treatment effect. The model for Warmth showed the treatment effect of receiving the Male Passage was a decrease of `r round(warmth_model$coefficients["passage_genderPassageM"], 3)` points on average for the Warmth rating. This supported our initial hypothesis, which assumed based on common gender stereotypes that the female character would be perceived as warmer than her male counterpart. In terms of practical significance however, a difference of `r round(warmth_model$coefficients["passage_genderPassageM"], 3)` on a 5-point Warmth scale is not a very substantive gap.
+As seen in the table below, the regression results for each of the outcome measures demonstrate a small negative treatment effect. The model for Warmth showed the treatment effect of receiving the Male Passage was a decrease of `r round(warmth_model$coefficients["passage_genderPassageM"], 3)` points on average for the Warmth rating. This supported our initial hypothesis, which assumed based on common gender stereotypes that the female character would be perceived as warmer than her male counterpart. In terms of practical significance however, a difference of `r round(warmth_model$coefficients["passage_genderPassageM"], 3)` on a 5-point Warmth scale is not a very substantive gap.
 
 Similarly, the regression model for Competence showed the treatment effect of receiving the Male Passage was a decrease of `r round(competence_model$coefficients["passage_genderPassageM"], 3)` points on average for the Competence rating. This contradicted our initial hypothesis, which assumed that the female character would be perceived as less competent than her male counterpart. In terms of practical significance, the estimated Competence treatment effect was roughly `r round(competence_model$coefficients["passage_genderPassageM"] / warmth_model$coefficients["passage_genderPassageM"])` times larger than the estimate for Warmth, which could be an indication that the passage context may be more impactful on perceptions of Competence than Warmth. Nevertheless, a treatment effect of `r round(competence_model$coefficients["passage_genderPassageM"], 3)` points on a 5-point scale is not very substantial.
 
@@ -363,7 +366,7 @@ duration_plot | check_pass_plot
 As the visualization above shows, participants from MTurk tended to take less time to complete the survey and pass fewer attention checks, compared to participants from Slack/Email. 
 
 ```{r, echo=FALSE}
-d_final[ , .(mean_warmth = mean(warmth), mean_competence = mean(competence), mean_respect = mean(respect), prop_recognized = mean(recognize_passage == 'Yes')), keyby=.(passage_gender, source)]
+knitr::kable(d_final[ , .(avg_warmth = mean(warmth), avg_competence = mean(competence), avg_respect = mean(respect), recognized = mean(recognize_passage == 'Yes')), keyby=.(passage_gender, source)], format = "markdown")
 ```
 
 As the table above shows, the proportion of participants who recognize the passage from MTurk is about 0.70 higher than the corresponding proportion from Slack/Email. Moreover, participants from MTurk tend to give ratings that are in the middle of the Likert scale on average and their average ratings for `warmth`, `competence`, and  `respect` are relatively close together. There is more distinction between ratings for the three metrics given by participants from Slack/Email.
@@ -432,7 +435,9 @@ stargazer(
   filtered_respect_model, type="latex", se = list(sqrt(diag(filtered_warmth_model$vcovHC_)),
                                       sqrt(diag(filtered_competence_model$vcovHC_)), 
                                       sqrt(diag(filtered_respect_model$vcovHC_))), 
-  covariate.labels = c("Treatment (male passage)", "Block: Cisgender Male", "Block: Nonbinary", "Block: Other", "Block: Transgender Female", "Block: Transgender Male", "Age", "Bachelor's degree", "Doctorate degree", "High school/GED", "Master's degree", "Enjoy reading", "Books read", "Enjoy sci-fi"))
+  covariate.labels = c("Treatment (male passage)", "Block: Cisgender Male", "Block: Nonbinary", "Block: Other", "Block: Transgender Female", "Block: Transgender Male", "Age", "Bachelor's degree", "Doctorate degree", "High school/GED", "Master's degree", "Enjoy reading", "Books read", "Enjoy sci-fi"), 
+  header=FALSE, 
+  title="Filtered Data Results")
 ```
 
 We applied the same regression tests as before to the potentially less noisy/higher quality subset of data from the Slack/E-mail sources. The filtered model for Warmth showed the treatment effect of receiving the Male Passage was an increase of `r round(filtered_warmth_model$coefficients["passage_genderPassageM"], 3)` points on average for the Warmth rating. This result reverses the direction of the effect we observed in the full dataset and now contradicts our initial hypothesis that the female character would be perceived as warmer than her male counterpart. Although the effect is reversed in direction, the size is comparable to the prior estimate which means that it is still not a practically substantive effect on a 5-point Warmth scale.
