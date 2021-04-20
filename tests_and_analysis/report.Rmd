@@ -476,11 +476,11 @@ Transformed the short story into two treatments:
 
 * Replaced identifiers of gender with gender pronouns corresponding to each treatment
 
-\newpage
-
 ```{r, echo=FALSE, fig.cap="An excerpt of from the short story I, Robot by Isaac Asimov", out.width = '80%'}
 knitr::include_graphics("short_story_excerpt.png")
 ```
+
+\newpage
 
 ```{r, echo=FALSE, fig.cap="Excerpt From Treatment 1: Passage With Female Character", out.width = '80%'}
 knitr::include_graphics("female_passage_excerpt.png")
