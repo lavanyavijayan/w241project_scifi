@@ -76,15 +76,15 @@ To track whether readers make similar distinctions in judgment when it comes to 
 
 ![Question Format](question_format.png)
 
-After reading the passage, participants were asked a series of questions to gauge their perception of the main character. These questions were of the form: In your opinion, how _________ is the interviewee in the passage? The blanks will be replaced by either Warmth terms (warm and well-intentioned) or Competence terms (competent and capable). We included an additional question asking, “How much do you respect the interviewee in the passage?” to consider an additional dimension of the character and any insights it may provide from if correlated with the other variables. As shown in Figure 3, participants’ responses will be recorded on a 5-point Likert scale, where 1 is “not at all” and 5 is “extremely” (Fiske et al., 2002). 
+After reading the passage, participants were asked a series of questions to gauge their perception of the main character. These questions were of the form: In your opinion, how _________ is the interviewee in the passage? The blanks were replaced by either Warmth terms (warm and well-intentioned) or Competence terms (competent and capable). We included an additional question asking, “How much do you respect the interviewee in the passage?” to consider an additional dimension of the character and any insights it may provide from if correlated with the other variables. As shown in Figure 3, participants’ responses were recorded on a 5-point Likert scale, where 1 is “not at all” and 5 is “extremely” (Fiske et al., 2002). 
 
-The variables Warmth and Competence will be calculated by taking the average responses of the associated questions. For example, someone who answered “3” for “In your opinion, how warm is the interviewee in the passage?” and “5” for “In your opinion, how well-intentioned is the interviewee in the passage?” will have a “Warmth” value of 4. Taking the average of multiple variables to calculate Warmth and Competence will allow us to treat Warmth and Competence as continuous variables when running the following tests and regressions instead of as ordinal variables. The Respect variable will be directly taken from responses to the question “How much do you respect the interviewee in the passage?” and remain as an ordinal variable. In total, we will have three metrics by which we will evaluate participants: Warmth, Competence, and Respect. 
+The variables Warmth and Competence were calculated by taking the average responses of the associated questions. For example, someone who answered “3” for “In your opinion, how warm is the interviewee in the passage?” and “5” for “In your opinion, how well-intentioned is the interviewee in the passage?” would have a “Warmth” value of 4. Taking the average of multiple variables to calculate Warmth and Competence allowed us to treat Warmth and Competence as continuous variables when running the following tests and regressions instead of as ordinal variables. The Respect variable was directly taken from responses to the question “How much do you respect the interviewee in the passage?” and remained as an ordinal variable. In total, we had three metrics by which we evaluated participants: Warmth, Competence, and Respect. 
 
 ## Covariates
 
-In addition to being randomly assigned a version of the passage to read, participants were evenly blocked according to their gender to reduce the potential for the reader’s gender to introduce major variations in character perception. Further covariates that we collected included basic information about the participant (i.e. gender, age, education) and the participant’s reading habits (i.e. How much do you enjoy reading compared to doing other things? How much do you like science fiction and fantasy compared to other things you read?). We used the information about reading habits to investigate potential correlations between past experience with the genre and character perception; if there are differences between how experienced and inexperienced SFF readers respond, this might be an indication that the two groups have some fundamental differences in how they understand gender in SFF due to their reading habits. 
+In addition to being randomly assigned a version of the passage to read, participants were evenly blocked according to their gender to reduce the potential for the reader’s gender to introduce major variations in character perception. Further covariates that we collected included basic information about the participant (i.e. gender, age, education) and the participant’s reading habits (i.e. How much do you enjoy reading compared to doing other things? How much do you like science fiction and fantasy compared to other things you read?). We used the information about reading habits to investigate potential correlations between past experience with the genre and character perception; if there are differences between how experienced and inexperienced SFF readers respond, this could be an indication that the two groups have some fundamental differences in how they understand gender in SFF due to their reading habits. 
 
-To assess whether participants are actually responding to passage, we also added comprehension/recall questions that demonstrated the participant’s understanding of the reading immediately after they were shown to passage. Specifically, we asked them the following (in the final study): 
+To assess whether participants were actually responding to passage, we also added comprehension/recall questions that demonstrated the participant’s understanding of the reading immediately after they were shown to passage. Specifically, we asked them the following (in the final study): 
 
 * What does the interviewer think the interviewee never does?
 
@@ -92,12 +92,12 @@ To assess whether participants are actually responding to passage, we also added
 
 * What is the interview being conducted for?
 
-The correct answers to these questions were explicitly stated in the passage and should have been clear to respondents who read the text comprehensively according to the survey instructions. The effectiveness of these comprehension questions was confirmed by the [insert stat about Slack/e-mail respondents]. Additionally, we also asked them “Did the passage look familiar to you?” to see if the familiarity of the passage or having read the full text was correlated with responses that differed from people who were reading the passage for the first time, as well as the effectiveness of our efforts in ambiguating the passage. 
+The correct answers to these questions were explicitly stated in the passage and should have been clear to respondents who read the text comprehensively according to the survey instructions. The effectiveness of these comprehension questions was confirmed by the high percentage of Slack/e-mail respondents who passed the attention check questions. Additionally, we also asked them “Did the passage look familiar to you?” to see if the familiarity of the passage or having read the full text was correlated with responses that differed from people who were reading the passage for the first time, as well as the effectiveness of our efforts in ambiguating the passage. 
 
 # Pilot Study
 
 ## Pilot Study Participants
-Participants of the pilot study were recruited through reaching out to friends and family and posting in our 5th year MIDS cohort Slack channel. So participants of the pilot study were mainly friends, family, and cohort members. There were 27 participants in total.
+Participants of the pilot study were recruited through reaching out to friends and family and posting in our 5th year MIDS cohort Slack channel. Participants of the pilot study were mainly friends, family, and cohort members. There were 27 participants in total.
 
 ## Pilot Data
 
@@ -202,7 +202,7 @@ power.t.test(power = .8,delta= diff_mean_respect,sd=pooled_sd_respect,sig.level=
         type="two.sample",alternative="two.sided",strict = TRUE)
 ```
 
-Doing a pilot study was a way to see if our study was reasonable and if there were any changes we needed to make before we released our final study. We conducted power calculations on the pilot study data to predict the appropriate sample size needed in our final study. We calculated for a power of 0.8 for all three outcome variables and got varying results for what sample size was necessary. We set a power of 0.8 because it was the standard in research and we thought an 80% probability of detecting an effect, given that the effect is really there was a high enough probability. Our final study will conduct t-tests of our outcome variables since we would have a sample larger than 30 respondents so we also used the power calculations on a t-test to be consistent with our final study. We computed the difference in means and pooled standard deviation of our metrics: warmth, competence, and respect to input into the power calculation. We needed 1550 respondents in total (775 respondents for each treatment) to have a power of 0.8 for our warmth metric that had a difference in mean of 0.08. With an even smaller difference in means (0.02) for our competence variable we would have needed 46,464 total respondents. Both of these sample sizes were unreasonable in the time and resources we had available to gather responses. However, our respect variable had a difference in means of 0.6 and with a power of 0.8 we would need only 100 total respondents (50 respondents in each treatment). This result gave us hope that if we could get at least 100 respondents we would have enough power to be confident in our results if we end up rejecting the null hypothesis in the final study. 
+Doing a pilot study was a way to see if our study was reasonable and if there were any changes we needed to make before we released our final study. We conducted power calculations on the pilot study data to predict the appropriate sample size needed in our final study. We calculated for a power of 0.8 for all three outcome variables and got varying results for what sample size was necessary. We set a power of 0.8 because it was the standard in research and we thought an 80% probability of detecting an effect, given that the effect is really there was a high enough probability. Our final study will conduct t-tests of our outcome variables since we would have a sample larger than 30 respondents so we also used the power calculations on a t-test to be consistent with our final study. We computed the difference in means and pooled standard deviation of our metrics: warmth, competence, and respect to input into the power calculation. We needed 1550 respondents in total (775 respondents for each treatment) to have a power of 0.8 for our Warmth metric that had a difference in mean of 0.08. With an even smaller difference in means (0.02) for our Competence variable we would have needed 46,464 total respondents. Both of these sample sizes were unreasonable in the time and resources we had available to gather responses. However, our Respect variable had a difference in means of 0.6 and with a power of 0.8 we would need only 100 total respondents (50 respondents in each treatment). This result gave us hope that if we could get at least 100 respondents we would have enough power to be confident in our results if we end up rejecting the null hypothesis in the final study. 
 
 ## Changes From Pilot Study To Final Study
 A handful of changes were made to the survey after the pilot study. First, we shifted to blocked random assignment by participant gender instead of simple random assignment. The motivation for this was discussed earlier in the randomization section of the report. Additionally, we added more instructions at the beginning of the survey --- participants were told to do their best to complete the survey in one sitting and that the survey would take approximately 10 minutes. This was done to motivate them to take the survey since it should not take more than 10 minutes and to encourage them to complete the survey sooner rather than later.
@@ -221,9 +221,9 @@ We received 106 responses from UC Berkeley School of Information Slack members a
 
 To recruit participants from Slack, we posted to the School of Information program-specific channels (#mids-announcements, #mims-announcements, #mics-announcements), as well as a general channel that anyone in that Slack workspace could be in (#noise). 
 
-To recruit participants from University English Departments across California, we scraped email addresses of department chairs and advisors at 144 universities. And we schedule sent emails to half of them on Tue, Mar 16, 7:48 AM and to the other half of them Wed, Mar 17, 7:48 AM. We emailed them the survey information and asked them to forward it to faculty and students in their department. 
+To recruit participants from University English Departments across California, we scraped email addresses of department chairs and advisors at 144 universities and we schedule sent emails to half of them on Tue, Mar 16, 7:48 AM and to the other half of them on Wed, Mar 17, 7:48 AM. We emailed them the survey information and asked them to forward it to faculty and students in their department. 
 
-We reached out to peers on Slack and University English Departments after getting the maximum responses from MTurk, in order to achieve a larger sample size and recruit people who are more likely to be invested in participating and willing to read a passage without pay. 
+We reached out to peers on Slack and University English Departments after getting the maximum responses from MTurk, in order to achieve a larger sample size and recruit people who we believed would be more likely to be invested in participating and willing to read a passage without pay. 
 
 The messages we wrote in Slack and over email are documented in Appendix 3. 
 
@@ -264,7 +264,7 @@ Exploratory visualizations of trends between covariates and the source (source b
 
 # Initial Results
 
-To analyze our results, we will take the average Warmth rating and Competence rating for each participant from the Warmth-specific and Competence-specific questions respectively. We will compare these average Warmth and Competence ratings between the group that read the passage with a male main character and the group that read the passage with a female main character. We plan to test whether there are significant differences between the average measures for the two groups that can be attributed to the character’s gender. 
+To analyze our results, we took the average Warmth rating and Competence rating for each participant from the Warmth-specific and Competence-specific questions respectively. We also took the Respect rating directly from the Respect-specific question. We compared these average ratings between the group that read the passage with a male main character and the group that read the passage with a female main character. We tested whether there were significant differences between the average measures for the two groups that can be attributed to the character’s gender. 
 
 ## Difference In Means
 
@@ -275,7 +275,7 @@ To analyze our results, we will take the average Warmth rating and Competence ra
 test_warmth <- t.test(warmth ~ passage_gender, data = d_final, paired = FALSE)
 ```
 
-The average `warmth` rating given to the female character was `r test_warmth$estimate[1]` and the average `warmth` rating given to the male character was `r test_warmth$estimate[2]`. The average treatment effect with the `warmth` metric (the average difference in perceived `warmth` between female character and male character) is `r test_warmth$statistic`. This test resulted in a p-value of `r test_warmth$p.value` and standard error of `r (test_warmth$conf.int[2] - test_warmth$conf.int[1]) / 3.92`.
+The average `warmth` rating given to the female character was `r test_warmth$estimate[1]` and the average `warmth` rating given to the male character was `r test_warmth$estimate[2]`. The average treatment effect with the `warmth` metric (the average difference in perceived `warmth` between female character and male character) is `r test_warmth$estimate[1] - test_warmth$estimate[2]`. This test resulted in a p-value of `r test_warmth$p.value` and standard error of `r (test_warmth$conf.int[2] - test_warmth$conf.int[1]) / 3.92`.
 
 ### Difference In Means For Competence
 
@@ -284,7 +284,7 @@ The average `warmth` rating given to the female character was `r test_warmth$est
 test_competence <- t.test(competence ~ passage_gender, data = d_final, paired = FALSE)
 ```
 
-The average `competence` rating given to the female character was `r test_competence$estimate[1]` and the average `competence` rating given to the male character was `r test_competence$estimate[2]`. The average treatment effect with the `competence` metric (the average difference in perceived `competence` between female character and male character) is `r test_competence$statistic`. This test resulted in a p-value of `r test_competence$p.value` and standard error of `r (test_competence$conf.int[2] - test_competence$conf.int[1]) / 3.92`.
+The average `competence` rating given to the female character was `r test_competence$estimate[1]` and the average `competence` rating given to the male character was `r test_competence$estimate[2]`. The average treatment effect with the `competence` metric (the average difference in perceived `competence` between female character and male character) is `r test_competence$estimate[1] - test_competence$estimate[2]`. This test resulted in a p-value of `r test_competence$p.value` and standard error of `r (test_competence$conf.int[2] - test_competence$conf.int[1]) / 3.92`.
 
 ### Difference In Means For Respect
 
@@ -293,7 +293,7 @@ The average `competence` rating given to the female character was `r test_compet
 test_respect <- t.test(respect ~ passage_gender, data = d_final, paired = FALSE)
 ```
 
-The average `respect` rating given to the female character was `r test_respect$estimate[1]` and the average `respect` rating given to the male character was `r test_respect$estimate[2]`. The average treatment effect with the `respect` metric (the average difference in perceived `respect` between female character and male character) is `r test_respect$statistic`. This test resulted in a p-value of `r test_respect$p.value` and standard error of `r (test_respect$conf.int[2] - test_respect$conf.int[1]) / 3.92`.
+The average `respect` rating given to the female character was `r test_respect$estimate[1]` and the average `respect` rating given to the male character was `r test_respect$estimate[2]`. The average treatment effect with the `respect` metric (the average difference in perceived `respect` between female character and male character) is `r test_respect$estimate[1] - test_respect$estimate[2]`. This test resulted in a p-value of `r test_respect$p.value` and standard error of `r (test_respect$conf.int[2] - test_respect$conf.int[1]) / 3.92`.
 
 The effect size for `respect` was largest, which indicates that the difference between how much respect participants have for the female character and how much respect participants have for the male character was largest, compared to the differences in the other metrics of perception (`warmth` and `competence`). 
 
@@ -369,7 +369,7 @@ As the visualization above shows, participants from MTurk tended to take less ti
 knitr::kable(d_final[ , .(avg_warmth = mean(warmth), avg_competence = mean(competence), avg_respect = mean(respect), recognized = mean(recognize_passage == 'Yes')), keyby=.(passage_gender, source)], format = "markdown")
 ```
 
-As the table above shows, the proportion of participants who recognize the passage from MTurk is about 0.70 higher than the corresponding proportion from Slack/Email. Moreover, participants from MTurk tend to give ratings that are in the middle of the Likert scale on average and their average ratings for `warmth`, `competence`, and  `respect` are relatively close together. There is more distinction between ratings for the three metrics given by participants from Slack/Email.
+As the table above shows, the proportion of participants who recognized the passage from MTurk is about 0.70 higher than the corresponding proportion from Slack/Email. Moreover, participants from MTurk tended to give ratings that were in the middle of the Likert scale on average and their average ratings for `warmth`, `competence`, and  `respect` were relatively close together. There was more distinction between ratings for the three metrics given by participants from Slack/Email.
 
 This leads us to believe that responses from MTurk might not be as thorough as responses from Slack/Email.
 
@@ -391,7 +391,7 @@ d_filtered <-  d_final %>% filter(source == "slack_email")
 test_warmth_filtered  <- t.test(warmth ~ passage_gender, data = d_filtered, paired = FALSE)
 ```
 
-The average `warmth` rating given to the female character was `r test_warmth_filtered$estimate[1]` and the average `warmth` rating given to the male character was `r test_warmth_filtered$estimate[2]`. The average treatment effect with the `warmth` metric (the average difference in perceived `warmth` between female character and male character) is `r test_warmth_filtered$statistic`. This test resulted in a p-value of `r test_warmth_filtered$p.value` and standard error of `r (test_warmth_filtered$conf.int[2] - test_warmth_filtered$conf.int[1]) / 3.92`.
+The average `warmth` rating given to the female character was `r test_warmth_filtered$estimate[1]` and the average `warmth` rating given to the male character was `r test_warmth_filtered$estimate[2]`. The average treatment effect with the `warmth` metric (the average difference in perceived `warmth` between female character and male character) is `r test_warmth_filtered$estimate[1] - test_warmth_filtered$estimate[2]`. This test resulted in a p-value of `r test_warmth_filtered$p.value` and standard error of `r (test_warmth_filtered$conf.int[2] - test_warmth_filtered$conf.int[1]) / 3.92`.
 
 ### Difference In Means For Competence On Filtered Data
 
@@ -400,7 +400,7 @@ The average `warmth` rating given to the female character was `r test_warmth_fil
 test_competence_filtered <- t.test(competence ~ passage_gender, data = d_filtered, paired = FALSE)
 ```
 
-The average `competence` rating given to the female character was `r test_competence_filtered$estimate[1]` and the average `competence` rating given to the male character was `r test_competence_filtered$estimate[2]`. The average treatment effect with the `competence` metric (the average difference in perceived `competence` between female character and male character) is `r test_competence_filtered$statistic`. This test resulted in a p-value of `r test_competence_filtered$p.value` and standard error of `r (test_competence_filtered$conf.int[2] - test_competence_filtered$conf.int[1]) / 3.92`.
+The average `competence` rating given to the female character was `r test_competence_filtered$estimate[1]` and the average `competence` rating given to the male character was `r test_competence_filtered$estimate[2]`. The average treatment effect with the `competence` metric (the average difference in perceived `competence` between female character and male character) is `r test_competence_filtered$estimate[1] - test_competence_filtered$estimate[2]`. This test resulted in a p-value of `r test_competence_filtered$p.value` and standard error of `r (test_competence_filtered$conf.int[2] - test_competence_filtered$conf.int[1]) / 3.92`.
 
 ### Difference In Means For Respect On Filtered Data
 
@@ -409,7 +409,7 @@ The average `competence` rating given to the female character was `r test_compet
 test_respect_filtered <- t.test(respect ~ passage_gender, data = d_filtered, paired = FALSE)
 ```
 
-The average `respect` rating given to the female character was `r test_respect_filtered$estimate[1]` and the average `respect` rating given to the male character was `r test_respect_filtered$estimate[2]`. The average treatment effect with the `respect` metric (the average difference in perceived `respect` between female character and male character) is `r test_respect_filtered$statistic`. This test resulted in a p-value of `r test_respect_filtered$p.value` and standard error of `r (test_respect_filtered$conf.int[2] - test_respect_filtered$conf.int[1]) / 3.92`.
+The average `respect` rating given to the female character was `r test_respect_filtered$estimate[1]` and the average `respect` rating given to the male character was `r test_respect_filtered$estimate[2]`. The average treatment effect with the `respect` metric (the average difference in perceived `respect` between female character and male character) is `r test_respect_filtered$estimate[1] - test_respect_filtered$estimate[2]`. This test resulted in a p-value of `r test_respect_filtered$p.value` and standard error of `r (test_respect_filtered$conf.int[2] - test_respect_filtered$conf.int[1]) / 3.92`.
 
 From performing exploratory difference in means on the filtered data, we observe that the effect direction has changed for `competence` from positive to negative. This indicates that among the participants coming from Slack or Email, participants perceived the female character’s competence to be lower than the male character on average. The female character being perceived as having less competence aligns with our expectation.
 
@@ -440,9 +440,9 @@ stargazer(
   title="Filtered Data Results")
 ```
 
-We applied the same regression tests as before to the potentially less noisy/higher quality subset of data from the Slack/E-mail sources. The filtered model for Warmth showed the treatment effect of receiving the Male Passage was an increase of `r round(filtered_warmth_model$coefficients["passage_genderPassageM"], 3)` points on average for the Warmth rating. This result reverses the direction of the effect we observed in the full dataset and now contradicts our initial hypothesis that the female character would be perceived as warmer than her male counterpart. Although the effect is reversed in direction, the size is comparable to the prior estimate which means that it is still not a practically substantive effect on a 5-point Warmth scale.
+We applied the same regression tests as before to the potentially less noisy/higher quality subset of data from the Slack/E-mail sources. The filtered model for Warmth showed the treatment effect of receiving the Male Passage was an increase of `r round(filtered_warmth_model$coefficients["passage_genderPassageM"], 3)` points on average for the Warmth rating. This result shows a reversal in the direction of the effect we observed in the full dataset and now contradicts our initial hypothesis that the female character would be perceived as warmer than her male counterpart. Although the effect is reversed in direction, the size is comparable to the prior estimate which means that it is still not a practically substantive effect on a 5-point Warmth scale.
 
-Similarly, the filtered model for Competence showed the treatment effect of receiving the Male Passage was an increase of `r round(filtered_competence_model$coefficients["passage_genderPassageM"], 3)` points on average for the Warmth rating. This result reverses the direction of the effect we observed in the full dataset and now supports our initial hypothesis that the female character would be perceived as less competent than her male counterpart. Again, the estimated Competence treatment effect was roughly `r round(filtered_competence_model$coefficients["passage_genderPassageM"] / filtered_warmth_model$coefficients["passage_genderPassageM"])` times larger than the estimate for Warmth, which maintains the pattern in effect size we noticed in our earlier analysis.
+Similarly, the filtered model for Competence showed the treatment effect of receiving the Male Passage was an increase of `r round(filtered_competence_model$coefficients["passage_genderPassageM"], 3)` points on average for the Warmth rating. This result also shows a reversal in the direction of the effect we observed in the full dataset and now supports our initial hypothesis that the female character would be perceived as less competent than her male counterpart. Again, the estimated Competence treatment effect was roughly `r round(filtered_competence_model$coefficients["passage_genderPassageM"] / filtered_warmth_model$coefficients["passage_genderPassageM"])` times larger than the estimate for Warmth, which maintains the pattern in effect size we noticed in our earlier analysis.
 
 Finally, the filtered regression for Respect showed the treatment effect of receiving the Male Passage was a decrease of `r round(filtered_respect_model$coefficients["passage_genderPassageM"], 3)` points on average for the Respect rating. Unlike the previous two filtered models, this result maintains the direction of our initial estimate and shows an effect size that is `r round(filtered_respect_model$coefficients["passage_genderPassageM"] / respect_model$coefficients["passage_genderPassageM"])` times larger than the original.
 
@@ -451,7 +451,7 @@ Overall in the exploratory regression analysis, all three models show treatment 
 
 # Conclusion
 
-Although the results from our final study initial results showed negative effects along the warmth, competence, and respect metrics from reading the male passage compared to the female passage, we found that our experiment was underpowered and presented low practical significance and no statistical significance due to the small effect size and large p-value. Upon further examination of our survey responses, we found that our different methods of sourcing participants had resulted in a range of response qualities, specifically that participants sourced through Slack and e-mail passed a much larger proportion of our passage attention checks. In response to this finding, we subset our data to only include participants sourced through Slack and e-mail. After performing tests on this subset of data, we found that the male character was perceived as being warmer and more competent, but less respected. This finding aligned with our expectation along the dimension of competence, and did not align with our expectation along the dimensions of warmth and respect. The quality of our original data may have impacted the patterns we observed for our outcome measures and that the question of gender stereotypes in science fiction requires more investigation in the context of different passages to resolve.
+Although the results from our final study initial results showed negative effects along the warmth, competence, and respect metrics from reading the male passage compared to the female passage, we found that our experiment was underpowered and presented low practical significance and no statistical significance due to the small effect size and large p-value. Upon further examination of our survey responses, we found that our different methods of sourcing participants had resulted in a range of response qualities, specifically that participants sourced through Slack and e-mail passed a much larger proportion of our passage attention checks. In response to this finding, we subset our data to only include participants sourced through Slack and e-mail. After performing tests on this subset of data, we found that the male character was perceived as being warmer and more competent, but less respected. This finding aligned with our expectation along the dimension of competence, and did not align with our expectation along the dimensions of warmth and respect. It indicates that the quality of our original data may have impacted the patterns we observed for our outcome measures and that the question of gender stereotypes in science fiction requires more investigation in the context of different passages to resolve.
 
 One of the limitations of our study is that it is highly dependent on the passage chosen for the treatment. From this study alone, it may be difficult to extrapolate the results because it is possible that something specific to the passage itself was what prompted different character perceptions (e.g. if the passage happened to describe an activity that is stereotypically seen as masculine, maybe the female main character might be perceived differently than the male main character specifically in this short context, but not in general across SFF literature). In addition, the SFF genre comes with its own stereotypes about gender, especially in terms of science and technology, which means that any differences in perception may be a function of the genre and not applicable to other works outside of SFF. Lastly, character perceptions may also be influenced by general enjoyment of the passage. 
 
@@ -459,12 +459,11 @@ In future studies, we would be interested in seeing the treatment effects for a 
 
 To further expand our research, we would also be interested in applying our current procedure to different genres other than SFF and expanding the range of character genders. Our current design tests specifically for differences in perception of male and female characters in SFF, but it would be relevant to investigate whether the results of the study apply beyond the context of the specific passage and genre as well as how perceptions may change for non-binary or gender non-conforming characters.
 
+\newpage 
 
 # Appendix
 
 ## Appendix 1. Process of Constructing Treatments
-
-![Figure A: An excerpt of from the short story I, Robot by Isaac Asimov](short_story_excerpt.png)
 
 **LEGEND**
 
@@ -472,17 +471,30 @@ Blue box := indicates character name and/or gender
 Green underline := indicates passage source
 
 Transformed the short story into two treatments:
-* Replaced indicators of literature source with less revealing words 
+
+* Replaced indicators of literature source with less revealing words
+
 * Replaced identifiers of gender with gender pronouns corresponding to each treatment
 
+\newpage
 
-![Figure B: Excerpt From Treatment 1: Passage With Female Character](female_passage_excerpt.png)
+```{r, echo=FALSE, fig.cap="An excerpt of from the short story I, Robot by Isaac Asimov", out.width = '80%'}
+knitr::include_graphics("short_story_excerpt.png")
+```
 
-![Figure C: Excerpt From Treatment 2: Passage With Male Character](male_passage_excerpt.png)
+```{r, echo=FALSE, fig.cap="Excerpt From Treatment 1: Passage With Female Character", out.width = '80%'}
+knitr::include_graphics("female_passage_excerpt.png")
+```
+
+```{r, echo=FALSE, fig.cap="Excerpt From Treatment 2: Passage With Male Character", out.width = '80%'}
+knitr::include_graphics("male_passage_excerpt.png")
+```
+
+\newpage
 
 ## Appendix 2: Distributions of outcome measures in pilot data
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 
 warm_plot_pilot <- plot_bars_by_gender(d_pilot$warm, d_pilot$passage_gender) + xlim(0.5, 5.4) + ylim(0, 10)+ 
   labs(title="Warm Rating Dist. (Pilot)", x="Warm Rating", y="Count") +
@@ -523,7 +535,7 @@ Hello [Staff Name],
 
 My name is [Team Member Name] and I am currently a student in UC Berkeley's Masters of Information and Data Science program. My team and I are currently conducting an experiment that requires participants to read a short science-fiction passage and answer a few questions about it. It would be a tremendous help if you could forward our survey to your department staff and students. The survey should only take a few minutes to complete and will hopefully be a fun read!
 
-Here is the survey link: https://berkeley.qualtrics.com/jfe/form/SV_5uSLGuW8jhEH1dk
+Here is the survey link: [SURVEY LINK]
 
 Please let me know if you have any questions or concerns.
 
@@ -532,7 +544,7 @@ Thank you for your time and best regards,
 
 ## Appendix 4. Distributions of outcome measures and covariates in final data
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 warm_plot_final <- plot_bars_by_gender(d_final$warm, d_final$passage_gender) + 
   labs(title="Warm Rating Dist. (Final)", x="Warm Rating", y="Count") +
   theme(legend.position="none")
@@ -552,7 +564,7 @@ respect_plot_final <- plot_bars_by_gender(d_final$respect, d_final$passage_gende
 respect_plot_final
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 enjoy_reading_dist <- plot_bars_by_gender(d_final$enjoy_reading, d_final$passage_gender) + 
   labs(title="Reading Enjoyment", x="Reading Enjoyment Rating", y="Count") +
   theme(legend.position = "none")
@@ -581,7 +593,7 @@ education_dist
 
 ## Appendix 5: Exploratory Visualizations of Trends Between Covariates and Source 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 # MTurk participants tend to be older
 age_plot <- ggplot(data=d_final) +
   geom_histogram(aes(x=age, fill=source), position="identity", alpha=0.8, binwidth = 3) + 
